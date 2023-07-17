@@ -16,7 +16,7 @@ export default function FavouriteScreen(props) {
   const [size, setSize] = useState('small');
   const navigation = useNavigation();
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
     <View className="flex-1">
       <StatusBar style="light" />
       <Image 
