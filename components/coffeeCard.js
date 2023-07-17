@@ -14,10 +14,10 @@ export default function CoffeeCard({item}) {
         style={{
           borderRadius: 40, 
           backgroundColor: themeColors.bgDark, 
-          height: ios? height*0.4 : 355, 
+          height: ios? height*0.4 : height*0.52, 
           width: width*0.65,
         }} 
-        className="pb-2" 
+        className= "my-2 pb-8" 
         >
         <View 
         style={{
@@ -58,7 +58,7 @@ export default function CoffeeCard({item}) {
               shadowRadius: 25,
               shadowOffset: {width: 0, height: 40},
               shadowOpacity: 0.8,
-            }} className="flex-row justify-between items-center -mt-10">
+            }} className="flex-row justify-between items-center -mt-10 pb-2">
               <Text className="text-white font-bold text-lg">$ {item.price}</Text>
               <TouchableOpacity 
               onPress={()=> navigation.navigate('Product', {...item})}

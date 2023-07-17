@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, TextInput, FlatList, Dimensions, Platform } from 'react-native'
+import { View, Text, Image, TouchableOpacity, TextInput, FlatList, Dimensions, Platform, KeyboardAvoidingView,ScrollView } from 'react-native';
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {themeColors} from '../theme';
@@ -15,6 +15,14 @@ export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState(1);
 
   return (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'positiom' : undefined}
+      enabled
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0} // Adjust this offset according to your UI requirements
+    >
+      <ScrollView showsVerticalScrollIndicator={false}>
+
     <View className="flex-1 relative bg-white">
       <StatusBar />
 
@@ -86,12 +94,14 @@ export default function HomeScreen() {
             sliderWidth={width}
             itemWidth={width*0.63}
             slideStyle={{display: 'flex', alignItems: 'center'}}
-          />
+            />
         </View>
         
       </View>
       
       
     </View>
+    </ScrollView>
+  </KeyboardAvoidingView>
   )
 }

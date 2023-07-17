@@ -51,7 +51,8 @@ function HomeTabs(){
         tabBarItemStyle: {
           marginTop: ios? 30: 0,
           
-        }
+        },
+        tabBarHideOnKeyboard: true,
       })}
       
       >
