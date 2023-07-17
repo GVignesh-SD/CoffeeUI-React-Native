@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, Dimensions, Platform } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Dimensions, Platform,ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar';
@@ -16,6 +16,7 @@ export default function FavouriteScreen(props) {
   const [size, setSize] = useState('small');
   const navigation = useNavigation();
   return (
+    <ScrollView>
     <View className="flex-1">
       <StatusBar style="light" />
       <Image 
@@ -80,51 +81,50 @@ export default function FavouriteScreen(props) {
             </TouchableOpacity>
           </View>
         </View>
-
-        <View className="px-4 space-y-2">
-          <Text style={{color: themeColors.text}} className="text-lg font-bold">About</Text>
-          <Text className="text-gray-600">
-            {item.desc}
-          </Text>
-        </View>
-        
-        
-
-        
+            
+            <View className="px-4 space-y-2">
+              <Text style={{color: themeColors.text}} className="text-lg font-bold">About</Text>
+              <Text className="text-gray-600">
+                {item.desc}
+              </Text>
+            </View>
+            
+          <View className={`space-y-3 ${ios? 'mb-6': 'mb-3'}`}>
+              <View className="flex-row justify-between items-center px-4 mb-2">
+                  <View className="flex-row items-center space-x-1">
+                    <Text className="text-base text-gray-700 font-semibold opacity-60">
+                      Volume 
+                    </Text>
+                    <Text className="text-base text-black font-semibold"> {item.volume}</Text>
+                  </View>
+                  <View 
+                    className="flex-row items-center space-x-4 border-gray-500 border rounded-full p-1 px-4">
+                    <TouchableOpacity>
+                      <MinusIcon size="20" strokeWidth={3} color={themeColors.text} />
+                    </TouchableOpacity>
+                    <Text style={{color: themeColors.text}} className="font-extrabold text-lg">2</Text>
+                    <TouchableOpacity>
+                      <PlusIcon size="20" strokeWidth={3} color={themeColors.text} />
+                    </TouchableOpacity>
+                  </View>
+              </View>
+              {/* buy now button */}
+              <View className="flex-row justify-between px-4">
+                <TouchableOpacity className="p-4 rounded-full border border-gray-400">
+                  <ShoppingBag size="30" color="gray" />
+                </TouchableOpacity>
+                <TouchableOpacity 
+                  style={{backgroundColor: themeColors.bgLight}} 
+                  className="p-4 rounded-full flex-1 ml-4">
+                  <Text className="text-center text-white text-base font-semibold">Buy now</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            
+          
       </SafeAreaView>
-      <View className={`space-y-3 ${ios? 'mb-6': 'mb-3'}`}>
-          <View className="flex-row justify-between items-center px-4 mb-2">
-              <View className="flex-row items-center space-x-1">
-                <Text className="text-base text-gray-700 font-semibold opacity-60">
-                  Volume 
-                </Text>
-                <Text className="text-base text-black font-semibold"> {item.volume}</Text>
-              </View>
-              <View 
-                className="flex-row items-center space-x-4 border-gray-500 border rounded-full p-1 px-4">
-                <TouchableOpacity>
-                  <MinusIcon size="20" strokeWidth={3} color={themeColors.text} />
-                </TouchableOpacity>
-                <Text style={{color: themeColors.text}} className="font-extrabold text-lg">2</Text>
-                <TouchableOpacity>
-                  <PlusIcon size="20" strokeWidth={3} color={themeColors.text} />
-                </TouchableOpacity>
-              </View>
-          </View>
-          {/* buy now button */}
-          <View className="flex-row justify-between px-4">
-            <TouchableOpacity className="p-4 rounded-full border border-gray-400">
-              <ShoppingBag size="30" color="gray" />
-            </TouchableOpacity>
-            <TouchableOpacity 
-              style={{backgroundColor: themeColors.bgLight}} 
-              className="p-4 rounded-full flex-1 ml-4">
-              <Text className="text-center text-white text-base font-semibold">Buy now</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        
       
     </View>
+    </ScrollView>
   )
 }
